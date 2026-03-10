@@ -1,0 +1,10 @@
+{
+  "obsidian": {
+    "command": "bun",
+    "args": ["/Users/cjensen32/.bun/bin/obsidian-mcp"],
+    "env": {
+      "OBSIDIAN_VAULT": "/Users/cjensen32/Documents/.memories",
+      "OBSIDIAN_CLI_PATH": "/Applications/Obsidian.app/Contents/MacOS/obsidian"
+    }
+  }
+}
