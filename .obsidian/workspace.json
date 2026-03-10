@@ -150,13 +150,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Untitled.base",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled"
+              "title": "Outline"
             }
           }
         ]
@@ -176,10 +175,11 @@
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
       "markdown-importer:Open format converter": false,
-      "random-note:Open random note": false
+      "random-note:Open random note": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "da4143192cd8da8e",
+  "active": "8459ce647463e13e",
   "lastOpenFiles": [
     "Untitled.base",
     "templates/research-note.md",

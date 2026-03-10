@@ -1,14 +1,12 @@
 {
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash /Users/cjensen32/Documents/.memories/hooks/session-start.sh"
-          }
-        ]
-      }
-    ]
-  }
+  "SessionStart": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash /Users/cjensen32/Documents/.memories/hooks/session-start.sh"
+        }
+      ]
+    }
+  ]
 }
