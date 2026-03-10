@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "91eec77695b0c546",
+        "id": "55de4563eb5afebd",
         "type": "tabs",
         "children": [
           {
-            "id": "8db21690b2f8c04b",
+            "id": "8459ce647463e13e",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -150,12 +150,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Untitled.base",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Untitled"
             }
           }
         ]
@@ -180,6 +181,7 @@
   },
   "active": "da4143192cd8da8e",
   "lastOpenFiles": [
+    "Untitled.base",
     "templates/research-note.md",
     "templates/project-init.md",
     "templates/daily-note.md",
