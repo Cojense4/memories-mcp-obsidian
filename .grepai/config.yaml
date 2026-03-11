@@ -12,7 +12,7 @@ chunking:
     overlap: 50
 watch:
     debounce_ms: 500
-    last_index_time: 2026-03-10T17:40:54.129601-05:00
+    last_index_time: 2026-03-11T14:23:35.853032-05:00
     rpg_persist_interval_ms: 1000
     rpg_derived_debounce_ms: 300
     rpg_full_reconcile_interval_sec: 300
@@ -21,32 +21,27 @@ search:
     boost:
         enabled: true
         penalties:
-            # De-prioritize plugin internals and binary configs
             - pattern: .obsidian/plugins
               factor: 0.2
             - pattern: .obsidian/themes
               factor: 0.1
-            # De-prioritize planning/meta artifacts vs actual memories
             - pattern: .sisyphus/plans
               factor: 0.5
             - pattern: .sisyphus/evidence
               factor: 0.7
             - pattern: .sisyphus/notepads
               factor: 0.6
-            # De-prioritize worktree copies (prefer canonical paths)
             - pattern: .claude/worktrees
               factor: 0.3
             - pattern: .git
               factor: 0.1
         bonuses:
-            # Primary memory storage - highest priority
             - pattern: /projects/
               factor: 1.4
             - pattern: /research/
               factor: 1.4
             - pattern: /dated-notes/
               factor: 1.3
-            # Operational memory (commands, templates, skills)
             - pattern: /commands/
               factor: 1.2
             - pattern: /templates/
@@ -117,23 +112,6 @@ ignore:
     - .zig-cache
     - zig-out
     - qdrant_storage
-    # Obsidian internals - large binary/config files not useful for semantic search
     - .obsidian/plugins
     - .obsidian/themes
     - .trash
-
-# Metadata indexing notes:
-# GrepAI indexes full file content including YAML frontmatter.
-# The following memory schema fields are searchable as text:
-#   - agent_name: (e.g. "claude-code", "cursor")
-#   - agent_model: (e.g. "anthropic/claude-opus-4-0")
-#   - session_id: (e.g. "ses_abc123")
-#   - memory_type: (conversation|fact|instruction|reference)
-#   - keywords: (comma-separated list)
-#   - embedding_model: nomic-embed-text
-#   - memory_type: conversation|fact|instruction|reference
-#
-# Search examples:
-#   grepai search "agent_name: claude-code"
-#   grepai search "memory_type: fact"
-#   grepai search "keywords: react, hooks"
