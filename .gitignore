@@ -1,3 +1,8 @@
 .grepai/*
 !.grepai/config.yaml
 .claude/worktrees/
+
+
+
+# Ignore Smart Environment folder
+.smart-env
