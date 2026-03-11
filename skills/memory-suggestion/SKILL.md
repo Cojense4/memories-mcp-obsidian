@@ -33,7 +33,7 @@ Suggest storing a memory when ANY of these occur:
 3. **If user says yes:** Execute the remember flow:
    - Category: appropriate folder
    - Filename: short, descriptive kebab-case
-   - Frontmatter with tags, date, source
+   - Frontmatter with tags, date, agent_name, agent_model, session_id, memory_type, keywords
    - Content: the learning + any relevant code snippet or context
 
 4. **If user says no or ignores:** Don't suggest again for this learning.
