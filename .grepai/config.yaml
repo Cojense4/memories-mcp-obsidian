@@ -21,49 +21,42 @@ search:
     boost:
         enabled: true
         penalties:
-            - pattern: /tests/
+            # De-prioritize plugin internals and binary configs
+            - pattern: .obsidian/plugins
+              factor: 0.2
+            - pattern: .obsidian/themes
+              factor: 0.1
+            # De-prioritize planning/meta artifacts vs actual memories
+            - pattern: .sisyphus/plans
               factor: 0.5
-            - pattern: /test/
-              factor: 0.5
-            - pattern: __tests__
-              factor: 0.5
-            - pattern: _test.
-              factor: 0.5
-            - pattern: .test.
-              factor: 0.5
-            - pattern: .spec.
-              factor: 0.5
-            - pattern: test_
-              factor: 0.5
-            - pattern: /mocks/
-              factor: 0.4
-            - pattern: /mock/
-              factor: 0.4
-            - pattern: .mock.
-              factor: 0.4
-            - pattern: /fixtures/
-              factor: 0.4
-            - pattern: /testdata/
-              factor: 0.4
-            - pattern: /generated/
-              factor: 0.4
-            - pattern: .generated.
-              factor: 0.4
-            - pattern: .gen.
-              factor: 0.4
-            - pattern: .md
+            - pattern: .sisyphus/evidence
+              factor: 0.7
+            - pattern: .sisyphus/notepads
               factor: 0.6
-            - pattern: /docs/
-              factor: 0.6
+            # De-prioritize worktree copies (prefer canonical paths)
+            - pattern: .claude/worktrees
+              factor: 0.3
+            - pattern: .git
+              factor: 0.1
         bonuses:
-            - pattern: /src/
+            # Primary memory storage - highest priority
+            - pattern: /projects/
+              factor: 1.4
+            - pattern: /research/
+              factor: 1.4
+            - pattern: /dated-notes/
+              factor: 1.3
+            # Operational memory (commands, templates, skills)
+            - pattern: /commands/
+              factor: 1.2
+            - pattern: /templates/
               factor: 1.1
-            - pattern: /lib/
+            - pattern: /skills/
               factor: 1.1
-            - pattern: /app/
-              factor: 1.1
+            - pattern: /docs/
+              factor: 1.2
     hybrid:
-        enabled: false
+        enabled: true
         k: 60
 trace:
     mode: fast
@@ -124,3 +117,23 @@ ignore:
     - .zig-cache
     - zig-out
     - qdrant_storage
+    # Obsidian internals - large binary/config files not useful for semantic search
+    - .obsidian/plugins
+    - .obsidian/themes
+    - .trash
+
+# Metadata indexing notes:
+# GrepAI indexes full file content including YAML frontmatter.
+# The following memory schema fields are searchable as text:
+#   - agent_name: (e.g. "claude-code", "cursor")
+#   - agent_model: (e.g. "anthropic/claude-opus-4-0")
+#   - session_id: (e.g. "ses_abc123")
+#   - memory_type: (conversation|fact|instruction|reference)
+#   - keywords: (comma-separated list)
+#   - embedding_model: nomic-embed-text
+#   - memory_type: conversation|fact|instruction|reference
+#
+# Search examples:
+#   grepai search "agent_name: claude-code"
+#   grepai search "memory_type: fact"
+#   grepai search "keywords: react, hooks"
